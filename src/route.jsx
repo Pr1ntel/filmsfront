@@ -1,1 +1,1 @@
-import menu from "./menu/MenuItem";
+import menu from "./components/menu/MenuItem";

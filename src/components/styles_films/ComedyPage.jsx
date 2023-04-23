@@ -1,9 +1,10 @@
-import {Table, Col, Row} from "antd";
-import {useNavigate} from "react-router-dom"
-import React from "react";
+import React from 'react';
+import {Col, Row, Table} from "antd";
+import MenuItem from "../menu/MenuItem";
+import TableItemMain from "../../TableItemMain";
+import {useNavigate} from "react-router-dom";
 
-
-function ActionPage() {
+function ComedyPage () {
     const columns = [
         {
             title: 'Название',
@@ -35,28 +36,28 @@ function ActionPage() {
     const data = [
         {
             key: 1,
-            name: 'Фильм1',
+            name: 'Комедия1',
             age: '18.2.1990',
             address: '190',
             description: 'Тут какое то описание',
         },
         {
             key: 2,
-            name: 'Фильм2',
+            name: 'Комедия2',
             age: '18.2.1990',
             address: '180',
             description: 'описание',
         },
         {
             key: 3,
-            name: 'Фильм3',
+            name: 'Комедия3',
             age: '18.2.1990',
             address: '177',
             description: 'Описание',
         },
         {
             key: 4,
-            name: 'Фильм4',
+            name: 'Комедия4',
             age: '18.2.1990',
             address: '156',
             description: 'Описание',
@@ -66,7 +67,8 @@ function ActionPage() {
     return (
         <div>
             <Row >
-                <Col span={24} >
+                <Col span={4}><MenuItem/></Col>
+                <Col span={20} >
                     <div style={{opacity: 0.9}}>
                         <Table
                             columns={columns}
@@ -91,7 +93,5 @@ function ActionPage() {
             </Row>
         </div>
     )
-}
-
-
-export default ActionPage;
+};
+export default ComedyPage;

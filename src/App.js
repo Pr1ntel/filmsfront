@@ -1,18 +1,18 @@
 import React from "react";
-import MenuItem from "./menu/MenuItem";
+import MenuItem from "./components/menu/MenuItem";
 import TableItemMain from "./TableItemMain";
-import { Col, Row } from 'antd';
+import {Col, Row} from 'antd';
 
 function App() {
-        return (
+    return (
 
-            <Row>
-                <Col span={4}><MenuItem /></Col>
-                <Col span={20}><TableItemMain /></Col>
-            </Row>
+        <Row>
+            <Col span={4}><MenuItem/></Col>
+            <Col span={20}><TableItemMain/></Col>
+        </Row>
 
 
-        )
+    )
 }
 
-            export default App;
+export default App;
