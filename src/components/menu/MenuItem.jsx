@@ -1,7 +1,7 @@
 import {
-    AppstoreOutlined, DeleteOutlined, DesktopOutlined, LoadingOutlined,
+    AppstoreOutlined,  DesktopOutlined, LoadingOutlined,
     MenuFoldOutlined, MenuUnfoldOutlined,
-    YoutubeOutlined,
+    YoutubeOutlined, PlusOutlined, QuestionOutlined, ScissorOutlined,PushpinOutlined
 } from '@ant-design/icons';
 import {Button, Menu} from 'antd';
 import {useState} from 'react';
@@ -26,9 +26,10 @@ const items = [
         getItem('', '5',<Link to ="/fantasy">Фантастика</Link>),
     ]),
     getItem('Действия', 'sub2', <AppstoreOutlined/>, [
-        getItem('Добавить фильм', '7'),
-        getItem('Удалить фильм', '8'),
-        getItem('Тут что то будет', 'sub3', <LoadingOutlined/>, [getItem('Что то', '11'), getItem('Что то', '12')]),
+        getItem('', '7',<PlusOutlined />,<Link to ="/addFilm">Добавить фильм</Link>),
+        getItem('', '8',<ScissorOutlined />),<Link to ="/deleteFilm">Удалить фильм</Link>,
+        getItem('', '9',<QuestionOutlined />),<Link to ="/findFilm">Поиск фильма</Link>,
+        getItem('На будущее', 'sub3', <LoadingOutlined/>, [getItem('Буду смотреть', '11',<PushpinOutlined />), getItem('Что то', '12')]),
     ]),
 ];
 const MenuItem = () => {

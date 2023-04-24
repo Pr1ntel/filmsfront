@@ -1,7 +1,7 @@
 import React from 'react';
 import {Col, Row} from "antd";
 import MenuItem from "../menu/MenuItem";
-import TableItemMain from "../../TableItemMain";
+import TableItemMain from "../menu/TableItemMain";
 
 const HorrorPage = () => {
     return (

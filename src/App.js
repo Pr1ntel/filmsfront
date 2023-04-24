@@ -1,6 +1,6 @@
 import React from "react";
 import MenuItem from "./components/menu/MenuItem";
-import TableItemMain from "./TableItemMain";
+import TableItemMain from "./components/menu/TableItemMain";
 import {Col, Row} from 'antd';
 
 function App() {

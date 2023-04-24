@@ -1,7 +1,6 @@
 import React from 'react';
 import {Col, Row, Table} from "antd";
 import MenuItem from "../menu/MenuItem";
-import TableItemMain from "../../TableItemMain";
 import {useNavigate} from "react-router-dom";
 
 function FantasyPage () {
@@ -109,7 +108,7 @@ function FantasyPage () {
                                 columns={columns}
                                 expandable={{
                                     expandedRowRender: (record) => (
-                                        <p className={"deskriptionBox"}
+                                        <p
                                             style={{
                                                 margin: 0,
                                                  background:"#f5f5dc",

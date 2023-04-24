@@ -1,20 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {BrowserRouter} from "react-router-dom";
 import App from "./App"
 import ActionPage from "./components/styles_films/ActionPage";
 import ComedyPage from "./components/styles_films/ComedyPage";
 import FantasyPage from "./components/styles_films/FantasyPage";
 import HorrorPage from "./components/styles_films/HorrorPage";
+import AddFilm from "./components/optionalFilms/AddFilm";
+import DeleteFilm from "./components/optionalFilms/DeleteFilm";
+import FindFilm from "./components/optionalFilms/FindFilm";
 import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
+import ErrorBoundary from "antd/es/alert/ErrorBoundary";
 
 
-const router = createBrowserRouter([{
-    path: "/",
-    element: <App/>
+const route = createBrowserRouter(
+    [{
+        path: "/",
+        element: <App/>
 },
     {
         path: "/horror",
@@ -32,14 +36,28 @@ const router = createBrowserRouter([{
         path: "/fantasy",
         element: <FantasyPage/>
     },
+    {
+        path: "/addFilm",
+        element: <AddFilm/>
+    },
+    {
+        path: "/deleteFilm",
+        element: <DeleteFilm/>
+    },
+    {
+        path: "/findFilm",
+        element: <FindFilm/>
+    },
 
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+    <ErrorBoundary>
     <React.StrictMode>
 
-        <RouterProvider router={router}/>
+        <RouterProvider router={route}/>
 
     </React.StrictMode>
+        </ErrorBoundary>
 );
