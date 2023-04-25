@@ -1,23 +1,31 @@
 import React from 'react';
-import {Button, Col, Form, Input, Row, Table} from 'antd';
+import {Button, Col, Form, Input, InputNumber, Row, Table} from 'antd';
 import MenuItem from "../menu/MenuItem";
 
-
-const MyFormItemContext = React.createContext([]);
-
-function toArr(str) {
-    return Array.isArray(str) ? str : [str];
-}
-
-const MyFormItemGroup = ({prefix, children}) => {
-    const prefixPath = React.useContext(MyFormItemContext);
-    const concatPath = React.useMemo(() => [...prefixPath, ...toArr(prefix)], [prefixPath, prefix]);
-    return <MyFormItemContext.Provider value={concatPath}>{children}</MyFormItemContext.Provider>;
+const layout = {
+    labelCol: {
+        span: 8,
+    },
+    wrapperCol: {
+        span: 16,
+    },
 };
-const MyFormItem = ({name, ...props}) => {
-    const prefixPath = React.useContext(MyFormItemContext);
-    const concatName = name !== undefined ? [...prefixPath, ...toArr(name)] : undefined;
-    return <Form.Item name={concatName} {...props} />;
+
+/* eslint-disable no-template-curly-in-string */
+const validateMessages = {
+    required: '${label} is required!',
+    types: {
+        email: '${label} is not a valid email!',
+        number: '${label} is not a valid number!',
+    },
+    number: {
+        range: '${label} must be between ${min} and ${max}',
+    },
+};
+/* eslint-enable no-template-curly-in-string */
+
+const onFinish = (values) => {
+    console.log(values);
 };
 const AddFilm = () => {
     const onFinish = (value) => {
@@ -30,25 +38,62 @@ const AddFilm = () => {
                 <Col span={20} >
                     <div style={{opacity: 0.9}}>
 
-                        <Form name="form_item_path" layout="vertical" onFinish={onFinish}>
-                            <MyFormItemGroup prefix={['user']}>
-                                <MyFormItemGroup prefix={['name']}>
-                                    <MyFormItem name="firstName" label="First Name">
-                                        <Input/>
-                                    </MyFormItem>
-                                    <MyFormItem name="lastName" label="Last Name">
-                                        <Input/>
-                                    </MyFormItem>
-                                </MyFormItemGroup>
-
-                                <MyFormItem name="age" label="Age">
-                                    <Input/>
-                                </MyFormItem>
-                            </MyFormItemGroup>
-
-                            <Button type="primary" htmlType="submit">
-                                Submit
-                            </Button>
+                        <Form
+                            {...layout}
+                            name="nest-messages"
+                            onFinish={onFinish}
+                            style={{
+                                maxWidth: 600,
+                            }}
+                            validateMessages={validateMessages}
+                        >
+                            <Form.Item
+                                name={['nameFilms']}
+                                label="Название фильма"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message:"Введите название фильма!!!!!!!!!!!!!!!!!!!!!!!!"
+                                    },
+                                ]}
+                            >
+                                <Input />
+                            </Form.Item>
+                            <Form.Item
+                                name={['dateFilms']}
+                                label="Дата выхода"
+                                rules={[
+                                    {
+                                       required:true,
+                                        message:"Введите ДАТУ ВЫХОДА фильма!!!!!!!!!!!!!!!!!!!!!!!!"
+                                    },
+                                ]}
+                            >
+                                <Input />
+                            </Form.Item>
+                            <Form.Item
+                                name={['time']}
+                                label="Длительность(Минут)"
+                                rules={[
+                                    {
+                                        type: 'number',
+                                        min: 0,
+                                        max: 500,
+                                    },
+                                ]}
+                            >
+                                <InputNumber />
+                            </Form.Item>
+                            <Form.Item
+                                wrapperCol={{
+                                    ...layout.wrapperCol,
+                                    offset: 8,
+                                }}
+                            >
+                                <Button type="primary" htmlType="submit">
+                                    Добавить
+                                </Button>
+                            </Form.Item>
                         </Form>
                     </div>
                 </Col>

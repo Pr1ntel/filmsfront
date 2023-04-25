@@ -8,56 +8,61 @@ import HorrorPage from "./components/styles_films/HorrorPage";
 import AddFilm from "./components/optionalFilms/AddFilm";
 import DeleteFilm from "./components/optionalFilms/DeleteFilm";
 import FindFilm from "./components/optionalFilms/FindFilm";
+import NotFound from "./components/styles_films/NotFound";
 import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
-import ErrorBoundary from "antd/es/alert/ErrorBoundary";
+
 
 
 const route = createBrowserRouter(
     [{
         path: "/",
         element: <App/>
-},
-    {
-        path: "/horror",
-        element: <HorrorPage/>
     },
-    {
-        path: "/comedy",
-        element: <ComedyPage/>
-    },
-    {
-        path: "/action",
-        element: <ActionPage/>
-    },
-    {
-        path: "/fantasy",
-        element: <FantasyPage/>
-    },
-    {
-        path: "/addFilm",
-        element: <AddFilm/>
-    },
-    {
-        path: "/deleteFilm",
-        element: <DeleteFilm/>
-    },
-    {
-        path: "/findFilm",
-        element: <FindFilm/>
-    },
+        {
+            path: "/horror",
+            element: <HorrorPage/>
+        },
+        {
+            path: "/comedy",
+            element: <ComedyPage/>
+        },
+        {
+            path: "/action",
+            element: <ActionPage/>
+        },
+        {
+            path: "/fantasy",
+            element: <FantasyPage/>
+        },
+        {
+            path: "/addFilm",
+            element: <AddFilm/>
+        },
+        {
+            path: "/deleteFilm",
+            element: <DeleteFilm/>
+        },
+        {
+            path: "/findFilm",
+            element: <FindFilm/>
+        },
+        {
+            path: "/notFound",
+            element: <NotFound/>
+        },
 
-]);
+    ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <ErrorBoundary>
-    <React.StrictMode>
 
-        <RouterProvider router={route}/>
+        <React.StrictMode>
 
-    </React.StrictMode>
-        </ErrorBoundary>
+            <RouterProvider router={route}/>
+
+        </React.StrictMode>
+
 );
