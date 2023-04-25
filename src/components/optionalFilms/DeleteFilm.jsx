@@ -1,5 +1,5 @@
 import React from 'react';
-
+import MenuItem from "../menu/MenuItem";
 const DeleteFilm = () => {
     return (
         <div>
