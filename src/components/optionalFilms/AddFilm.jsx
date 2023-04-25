@@ -11,7 +11,6 @@ const layout = {
     },
 };
 
-/* eslint-disable no-template-curly-in-string */
 const validateMessages = {
     required: '${label} is required!',
     types: {
@@ -19,10 +18,9 @@ const validateMessages = {
         number: '${label} is not a valid number!',
     },
     number: {
-        range: '${label} must be between ${min} and ${max}',
+        range: '${label} должна быть от ${min} до ${max}',
     },
 };
-/* eslint-enable no-template-curly-in-string */
 
 const onFinish = (values) => {
     console.log(values);
@@ -33,9 +31,9 @@ const AddFilm = () => {
     };
     return (
         <div>
-            <Row >
+            <Row>
                 <Col span={4}><MenuItem/></Col>
-                <Col span={20} >
+                <Col span={20}>
                     <div style={{opacity: 0.9}}>
 
                         <Form
@@ -53,23 +51,23 @@ const AddFilm = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message:"Введите название фильма!!!!!!!!!!!!!!!!!!!!!!!!"
+                                        message: "Введите название фильма!!!!!!!!!!!!!!!!!!!!!!!!"
                                     },
                                 ]}
                             >
-                                <Input />
+                                <Input/>
                             </Form.Item>
                             <Form.Item
                                 name={['dateFilms']}
                                 label="Дата выхода"
                                 rules={[
                                     {
-                                       required:true,
-                                        message:"Введите ДАТУ ВЫХОДА фильма!!!!!!!!!!!!!!!!!!!!!!!!"
+                                        required: true,
+                                        message: "Введите ДАТУ ВЫХОДА фильма!!!!!!!!!!!!!!!!!!!!!!!!"
                                     },
                                 ]}
                             >
-                                <Input />
+                                <Input/>
                             </Form.Item>
                             <Form.Item
                                 name={['time']}
@@ -82,7 +80,7 @@ const AddFilm = () => {
                                     },
                                 ]}
                             >
-                                <InputNumber />
+                                <InputNumber/>
                             </Form.Item>
                             <Form.Item
                                 wrapperCol={{
@@ -97,7 +95,6 @@ const AddFilm = () => {
                         </Form>
                     </div>
                 </Col>
-
             </Row>
         </div>
     )
