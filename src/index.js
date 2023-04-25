@@ -1,68 +1,66 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from "./App"
-import ActionPage from "./components/styles_films/ActionPage";
-import ComedyPage from "./components/styles_films/ComedyPage";
-import FantasyPage from "./components/styles_films/FantasyPage";
-import HorrorPage from "./components/styles_films/HorrorPage";
-import AddFilm from "./components/optionalFilms/AddFilm";
-import DeleteFilm from "./components/optionalFilms/DeleteFilm";
-import FindFilm from "./components/optionalFilms/FindFilm";
-import NotFound from "./components/styles_films/NotFound";
 import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
 
+import App from "./App"
+import HorrorPage from "./components/styles_films/HorrorPage";
+import ComedyPage from "./components/styles_films/ComedyPage";
+import ActionPage from "./components/styles_films/ActionPage";
+import FantasyPage from "./components/styles_films/FantasyPage";
+import AddFilm from "./components/optionalFilms/AddFilm";
+import DeleteFilm from "./components/optionalFilms/DeleteFilm";
+import FindFilm from "./components/optionalFilms/FindFilm";
+import NotFound from "./components/styles_films/NotFound";
 
 
 const route = createBrowserRouter(
     [{
         path: "/",
-        element: <App/>
+        element: <App />
     },
         {
             path: "/horror",
-            element: <HorrorPage/>
+            element: <HorrorPage />
         },
         {
             path: "/comedy",
-            element: <ComedyPage/>
+            element: <ComedyPage />
         },
         {
             path: "/action",
-            element: <ActionPage/>
+            element: <ActionPage />
         },
         {
             path: "/fantasy",
-            element: <FantasyPage/>
+            element: <FantasyPage />
         },
         {
             path: "/addFilm",
-            element: <AddFilm/>
+            element: <AddFilm />
         },
         {
             path: "/deleteFilm",
-            element: <DeleteFilm/>
+            element: <DeleteFilm />
         },
         {
             path: "/findFilm",
-            element: <FindFilm/>
+            element: <FindFilm />
         },
         {
-            path: "/notFound",
-            element: <NotFound/>
-        },
+            path:"/*",
+            element:<NotFound />
+        }
 
     ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+    <React.StrictMode>
 
-        <React.StrictMode>
+        <RouterProvider router={route}/>
 
-            <RouterProvider router={route}/>
-
-        </React.StrictMode>
-
+    </React.StrictMode>
 );
