@@ -51,7 +51,7 @@ const AddFilm = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: "Введите название фильма!!!!!!!!!!!!!!!!!!!!!!!!"
+                                        message: "Введите название фильма!"
                                     },
                                 ]}
                             >
@@ -63,7 +63,7 @@ const AddFilm = () => {
                                 rules={[
                                     {
                                         required: true,
-                                        message: "Введите ДАТУ ВЫХОДА фильма!!!!!!!!!!!!!!!!!!!!!!!!"
+                                        message: "Введите дату выхода фильма!"
                                     },
                                 ]}
                             >
@@ -81,6 +81,18 @@ const AddFilm = () => {
                                 ]}
                             >
                                 <InputNumber/>
+                            </Form.Item>
+                            <Form.Item
+                                name={['description']}
+                                label="Описание фильма"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: "Введите описание фильма!"
+                                    },
+                                ]}
+                            >
+                                <Input/>
                             </Form.Item>
                             <Form.Item
                                 wrapperCol={{
