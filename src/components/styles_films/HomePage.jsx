@@ -4,7 +4,7 @@ import React from "react";
 import MenuItem from "../menu/MenuItem";
 
 
-function ActionPage() {
+function HomePage() {
     const columns = [
         {
             title: 'Название',
@@ -26,7 +26,6 @@ function ActionPage() {
             dataIndex: 'photo',
             key: 'photo',
         },
-
     ];
     const data = [
         {
@@ -89,6 +88,6 @@ function ActionPage() {
         </div>
     )
 }
+export default HomePage;
 
 
-export default ActionPage;

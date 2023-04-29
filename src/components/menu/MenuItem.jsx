@@ -18,7 +18,7 @@ function getItem(label, key, icon, children, type) {
 }
 
 const items = [
-    getItem('Главная', '1', <DesktopOutlined/>),
+    getItem('Главная', '1',<Link to ="/getAllFilms"></Link>),
     getItem('Жанры фильмов', 'sub1', <YoutubeOutlined/>, [
         getItem('', '2', <Link to ="/horror">Ужасы</Link>) ,
         getItem('', '3', <Link to ="/comedy">Комедии</Link>),

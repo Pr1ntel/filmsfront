@@ -30,12 +30,7 @@ function TableItemMain() {
             dataIndex: 'photo',
             key: 'photo',
         },
-        {
-            title: 'Action',
-            dataIndex: '',
-            key: 'x',
-            render: () => <a>Delete</a>,
-        },
+
     ];
     const data = [
         {

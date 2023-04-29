@@ -25,12 +25,7 @@ function ComedyPage () {
             dataIndex: 'photo',
             key: 'photo',
         },
-        {
-            title: 'ActionPage',
-            dataIndex: '',
-            key: 'x',
-            render: () => <a>Delete</a>,
-        },
+
     ];
     const data = [
         {
