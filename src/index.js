@@ -14,6 +14,7 @@ import AddFilm from "./components/optionalFilms/AddFilm";
 import DeleteFilm from "./components/optionalFilms/DeleteFilm";
 import FindFilm from "./components/optionalFilms/FindFilm";
 import NotFound from "./components/styles_films/NotFound";
+import HomePage from "./components/styles_films/HomePage";
 
 
 const route = createBrowserRouter(
@@ -52,6 +53,10 @@ const route = createBrowserRouter(
         {
             path:"/*",
             element:<NotFound />
+        },
+        {
+            path: "/getAllFilms",
+            element: <HomePage/>
         }
 
     ]);
