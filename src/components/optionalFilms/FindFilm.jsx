@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Table, Col, Row, Input, Space, Select, Button} from "antd";
 import MenuItem from "../menu/MenuItem";
 
 const FindFilm = () => {
+    let [battlefieldData, setBattlefieldData] = useState("");
     const columns = [
         {
             title: 'Название',
@@ -58,7 +59,13 @@ const FindFilm = () => {
                     <div>
                         <Input placeholder="Название фильма" style={{
                             width: '40%'
-                        }}/>
+                        }}
+                        value={battlefieldData}
+                               onChange={event => {
+                                   setBattlefieldData(event.target.value);
+                                   console.log(battlefieldData)
+                               }}
+                        />
                     </div>
                     <div>
                         <Space

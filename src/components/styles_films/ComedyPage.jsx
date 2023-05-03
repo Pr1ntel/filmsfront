@@ -1,62 +1,48 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Col, Row, Table} from "antd";
 import MenuItem from "../menu/MenuItem";
 import {useNavigate} from "react-router-dom";
+import FilmsApiWorker from "../../api/Api";
 
 function ComedyPage () {
     const columns = [
         {
             title: 'Название',
-            dataIndex: 'name',
+            dataIndex: 'nameFilms',
             key: 'name',
         },
         {
             title: 'Дата выхода',
-            dataIndex: 'age',
+            dataIndex: 'releaseDate',
             key: 'age',
         },
         {
             title: 'Длительность(Минут)',
-            dataIndex: 'address',
+            dataIndex: 'durationFilm',
             key: 'address',
         },
         {
-            title: 'Фото',
-            dataIndex: 'photo',
-            key: 'photo',
+            title: 'Описание',
+            dataIndex: 'descriptionFilm',
+            key: 'description',
         },
 
+
     ];
-    const data = [
-        {
-            key: 1,
-            name: 'Комедия1',
-            age: '18.2.1990',
-            address: '190',
-            description: 'Тут какое то описание',
-        },
-        {
-            key: 2,
-            name: 'Комедия2',
-            age: '18.2.1990',
-            address: '180',
-            description: 'описание',
-        },
-        {
-            key: 3,
-            name: 'Комедия3',
-            age: '18.2.1990',
-            address: '177',
-            description: 'Описание',
-        },
-        {
-            key: 4,
-            name: 'Комедия4',
-            age: '18.2.1990',
-            address: '156',
-            description: 'Описание',
-        },
-    ];
+    let filmsApiWorker = new FilmsApiWorker();
+    let [data, setData] = useState([]);
+    const getAllFilms = () => {
+        filmsApiWorker.getAllFilms()
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(error => {
+                console.log("getAllBankClients ERRRROR");
+            });
+    }
+    useEffect(() => {
+        getAllFilms();
+    }, []);
     const navigate = useNavigate()
     return (
         <div>
