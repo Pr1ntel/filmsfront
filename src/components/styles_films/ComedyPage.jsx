@@ -28,17 +28,17 @@ function ComedyPage () {
     ];
     let filmsApiWorker = new FilmsApiWorker();
     let [data, setData] = useState([]);
-    const getAllFilms = () => {
-        filmsApiWorker.getAllFilms()
+    const getComedyFilms = () => {
+        filmsApiWorker.getComedyFilms()
             .then(response => {
                 setData(response.data);
             })
             .catch(error => {
-                console.log("getAllBankClients ERRRROR");
+                console.log("getComedyFilms ERRRROR");
             });
     }
     useEffect(() => {
-        getAllFilms();
+        getComedyFilms();
     }, []);
     const navigate = useNavigate()
     return (

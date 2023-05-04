@@ -1,62 +1,46 @@
 import {Table, Col, Row} from "antd";
 import {useNavigate} from "react-router-dom"
-import React from "react";
+import React, {useEffect, useState} from "react";
 import MenuItem from "../menu/MenuItem";
+import FilmsApiWorker from "../../api/Api";
 
 
 function HomePage() {
     const columns = [
         {
             title: 'Название',
-            dataIndex: 'name',
+            dataIndex: 'nameFilms',
             key: 'name',
+            description:'descriptionFilm'
         },
         {
             title: 'Дата выхода',
-            dataIndex: 'age',
+            dataIndex: 'releaseDate',
             key: 'age',
         },
         {
             title: 'Длительность(Минут)',
-            dataIndex: 'address',
+            dataIndex: 'durationFilm',
             key: 'address',
         },
-        {
-            title: 'Фото',
-            dataIndex: 'photo',
-            key: 'photo',
-        },
+
+
+
     ];
-    const data = [
-        {
-            key: 1,
-            name: 'боевик1',
-            age: '18.2.1990',
-            address: '190',
-            description: 'Тут какое то описание',
-        },
-        {
-            key: 2,
-            name: 'боевик2',
-            age: '18.2.1990',
-            address: '180',
-            description: 'описание',
-        },
-        {
-            key: 3,
-            name: 'боевик3',
-            age: '18.2.1990',
-            address: '177',
-            description: 'Описание',
-        },
-        {
-            key: 4,
-            name: 'боевик3',
-            age: '18.2.1990',
-            address: '156',
-            description: 'Описание',
-        },
-    ];
+    let filmsApiWorker = new FilmsApiWorker();
+    let [data, setData] = useState([]);
+    const getAllFilms = () => {
+        filmsApiWorker.getAllFilms()
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(error => {
+                console.log("getAllFilms ERRRROR");
+            });
+    }
+    useEffect(() => {
+        getAllFilms();
+    }, []);
     const navigate = useNavigate()
     return (
         <div>
@@ -73,7 +57,7 @@ function HomePage() {
                                             margin: 0,
                                         }}
                                     >
-                                        {record.description}
+                                        {record.descriptionFilm}
                                     </p>
                                 ),
                                 rowExpandable: (record) => record.name !== 'Not Expandable',

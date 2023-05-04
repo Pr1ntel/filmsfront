@@ -1,96 +1,43 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Col, Row, Table} from "antd";
 import MenuItem from "../menu/MenuItem";
 import {useNavigate} from "react-router-dom";
+import FilmsApiWorker from "../../api/Api";
 
 function FantasyPage () {
-        const columns = [
-            {
-                title: 'Название',
-                dataIndex: 'name',
-                key: 'name',
-            },
-            {
-                title: 'Дата выхода',
-                dataIndex: 'age',
-                key: 'age',
-            },
-            {
-                title: 'Длительность(Минут)',
-                dataIndex: 'address',
-                key: 'address',
-            },
-            {
-                title: 'Фото',
-                dataIndex: 'photo',
-                key: 'photo',
-            },
-        ];
-        const data = [
-            {
-                key: 1,
-                name: 'фантастика1',
-                age: '18.2.1990',
-                address: '190',
-                description: 'Тут какое то описание',
-            },
-            {
-                key: 2,
-                name: 'фантастика2',
-                age: '18.2.1990',
-                address: '180',
-                description: 'описание',
-            },
-            {
-                key: 3,
-                name: 'фантастика3',
-                age: '18.2.1990',
-                address: '177',
-                description: 'Описание',
-            },
-            {
-                key: 4,
-                name: 'фантастика4',
-                age: '18.2.1990',
-                address: '156',
-                description: 'Описание',
-            },
-            {
-                key: 5,
-                name: 'фантастика4',
-                age: '18.2.1990',
-                address: '156',
-                description: 'Описание',
-            },
-            {
-                key: 6,
-                name: 'фантастика4',
-                age: '18.2.1990',
-                address: '156',
-                description: 'Описание',
-            },
-            {
-                key: 7,
-                name: 'фантастика4',
-                age: '18.2.1990',
-                address: '156',
-                description: 'Описание',
-            },
-            {
-                key: 8,
-                name: 'фантастика4',
-                age: '18.2.1990',
-                address: '156',
-                description: 'Описание',
-            },
-            {
-                key: 9,
-                name: 'фантастика4',
-                age: '18.2.1990',
-                address: '156',
-                description: 'Описание',
-            },
-        ];
+    const columns = [
+        {
+            title: 'Название',
+            dataIndex: 'nameFilms',
+            key: 'name',
+            description:'descriptionFilm'
+        },
+        {
+            title: 'Дата выхода',
+            dataIndex: 'releaseDate',
+            key: 'age',
+        },
+        {
+            title: 'Длительность(Минут)',
+            dataIndex: 'durationFilm',
+            key: 'address',
+        },
+
+    ];
+    let filmsApiWorker = new FilmsApiWorker();
+    let [data, setData] = useState([]);
+    const getFantasyFilms = () => {
+        filmsApiWorker.getFantasyFilms()
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(error => {
+                console.log("getActionFilms ERRRROR");
+            });
+    }
+    useEffect(() => {
+        getFantasyFilms();
+    }, []);
         const navigate = useNavigate()
         return (
             <div>
@@ -109,7 +56,7 @@ function FantasyPage () {
 
                                             }}
                                         >
-                                            {record.description}
+                                            {record.descriptionFilm}
                                         </p>
                                     ),
                                     rowExpandable: (record) => record.name !== 'Not Expandable',
