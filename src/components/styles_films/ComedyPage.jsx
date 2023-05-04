@@ -10,6 +10,7 @@ function ComedyPage () {
             title: 'Название',
             dataIndex: 'nameFilms',
             key: 'name',
+            description:'descriptionFilm'
         },
         {
             title: 'Дата выхода',
@@ -21,11 +22,7 @@ function ComedyPage () {
             dataIndex: 'durationFilm',
             key: 'address',
         },
-        {
-            title: 'Описание',
-            dataIndex: 'descriptionFilm',
-            key: 'description',
-        },
+
 
 
     ];
@@ -59,7 +56,7 @@ function ComedyPage () {
                                             margin: 0,
                                         }}
                                     >
-                                        {record.description}
+                                        {record.descriptionFilm}
                                     </p>
                                 ),
                                 rowExpandable: (record) => record.name !== 'Not Expandable',

@@ -12,6 +12,18 @@ class FilmsApiWorker {
     async getAllFilms() {
         return await this.#axios.get("/getAllFilms");
     }
+    async getHorrorFilms() {
+        return await this.#axios.get("/horror");
+    }
+    async getComedyFilms() {
+        return await this.#axios.get("/comedy");
+    }
+    async getActionFilms() {
+        return await this.#axios.get("/action");
+    }
+    async getFantasyFilms() {
+        return await this.#axios.get("/fantasy");
+    }
 
 }
 
