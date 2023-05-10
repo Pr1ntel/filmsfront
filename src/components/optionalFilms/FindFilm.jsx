@@ -10,27 +10,30 @@ const FindFilm = () => {
         {
             title: 'Название',
             dataIndex: 'nameFilms',
-            key: 'name',
+            key: '1',
             description:'descriptionFilm'
         },
         {
             title: 'Дата выхода',
             dataIndex: 'releaseDate',
-            key: 'age',
+            key: '2',
         },
         {
             title: 'Длительность(Минут)',
             dataIndex: 'durationFilm',
-            key: 'address',
+            key: '3',
         },
 
     ];
     let filmsApiWorker = new FilmsApiWorker();
     let [data, setData] = useState([]);
     const getFilmById = () => {
-        filmsApiWorker.getFilmById()
+        filmsApiWorker.getFilmById(battlefieldData)
             .then(response => {
-                setData(response.data);
+                console.log(response.data);
+                let temp = [];
+                temp.push(response.data);
+                setData(temp);
             })
             .catch(error => {
                 console.log("getFindFilm ERRRROR");
@@ -60,7 +63,7 @@ const FindFilm = () => {
                                 ),
                                 rowExpandable: (record) => record.name !== 'Not Expandable',
                             }}
-
+                            dataSource={data}
 
                         />
                     </div>
@@ -93,7 +96,8 @@ const FindFilm = () => {
                                 htmlType="submit"
                                 style={{
                                     width: '13%',
-                                }}>
+                                }}
+                        onClick={getFilmById}>
                             Поиск
                         </Button>
                     </div>

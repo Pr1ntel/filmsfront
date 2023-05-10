@@ -1,4 +1,5 @@
 import axios from "axios";
+import findFilm from "../components/optionalFilms/FindFilm";
 
 class FilmsApiWorker {
     #axios;
@@ -24,8 +25,8 @@ class FilmsApiWorker {
     async getFantasyFilms() {
         return await this.#axios.get("/fantasy");
     }
-    async getFilmById(){
-        return await  this.#axios.get("/findFilm")
+    async getFilmById(id){
+        return await  this.#axios.get(`/findFilm/${id}`);
     }
 
 }
