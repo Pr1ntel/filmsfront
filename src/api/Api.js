@@ -24,6 +24,9 @@ class FilmsApiWorker {
     async getFantasyFilms() {
         return await this.#axios.get("/fantasy");
     }
+    async getFilmById(){
+        return await  this.#axios.get("/findFilm")
+    }
 
 }
 

@@ -46,6 +46,7 @@ function ActionPage() {
                 <Col span={4}><MenuItem/></Col>
                 <Col span={20} >
                     <div style={{opacity: 0.9}}>
+
                         <Table
                             columns={columns}
                             expandable={{
