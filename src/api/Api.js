@@ -26,7 +26,10 @@ class FilmsApiWorker {
         return await this.#axios.get("/fantasy");
     }
     async getFilmById(id){
-        return await  this.#axios.get(`/findFilm/${id}`);
+        return await this.#axios.get(`/findFilm/${id}`);
+    }
+    async deleteFilmById(id){
+        return await this.#axios.delete(`/deleteFilm/${id}`);
     }
 
 }

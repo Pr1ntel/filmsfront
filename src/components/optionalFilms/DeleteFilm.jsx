@@ -1,51 +1,69 @@
 import MenuItem from "../menu/MenuItem";
-import {AudioOutlined} from '@ant-design/icons';
-import {Col, Input, Space, Row, Select,Button} from 'antd';
-import React from "react";
+import {Col, Input, Space, Row, Select, Button} from 'antd';
+import React, {useEffect, useState} from "react";
+import FilmsApiWorker from "../../api/Api";
+import {useNavigate} from "react-router-dom";
 
-const {Search} = Input;
 
-const onSearch = (value) => console.log(value);
+const DeleteFilm = () => {
+    let [battlefieldData, setBattlefieldData] = useState("");
+    let [data, setData] = useState("");
+    let filmsApiWorker = new FilmsApiWorker();
 
-const DeleteFilm = () => (
-    <div>
-        <Row>
-            <Col span={8}><MenuItem/></Col>
-            <Col span={16}>
-                <div style={{opacity: 1}}>
-                    <div>
-                        <Input placeholder="Название фильма" style={{
-                            width:'19%'
-                        }} />
-                        </div>
+    const deleteFilmById = () => {
+        filmsApiWorker.deleteFilmById(battlefieldData)
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(error => {
+                console.log("getFindFilm ERRRROR");
+            });
+    }
+    useEffect(() => {
+        deleteFilmById(battlefieldData);
+    }, []);
+    const navigate = useNavigate();
+    return (
+        <div>
+            <Row>
+                <Col span={8}><MenuItem/></Col>
+                <Col span={16}>
+                    <div style={{opacity: 1}}>
                         <div>
-                    <Space
-                        direction="vertical"
-                        style={{
-                            width: '18%',
-                        }}
-                    />
-                        <Select
-                            placeholder="Жанр"
-                            style={{
+                            <Input placeholder="ID фильма" style={{
                                 width: '19%',
                             }}
-                        />
-                            </div>
-                    <div>
-                        <Button type="primary" danger ghost
-                        style={{
-                            width:'7%',
-                        }}>
-                            Удалить
-                        </Button>
+                                   value={battlefieldData}
+                                   onChange={event => {
+                                       setBattlefieldData(event.target.value);
+                                       console.log(battlefieldData)
+                                   }}/>
+                        </div>
+                        <div>
+                            <Space
+                                direction="vertical"
+                                style={{
+                                    width: '18%',
+                                }}
+                            />
+                        </div>
+                        <div>
+                            <Button type="primary" danger ghost
+                                    htmlType="submit"
+                                    style={{
+                                        width: '9%',
+                                    }}
+                                    onClick={DeleteFilm}>
+                                Удалить
+                            </Button>
+                        </div>
+
+
                     </div>
-
-
-                </div>
-            </Col>
-        </Row>
-    </div>
-);
+                </Col>
+            </Row>
+        </div>
+    )
+};
 
 export default DeleteFilm;

@@ -5,7 +5,6 @@ import FilmsApiWorker from "../../api/Api";
 import {useNavigate} from "react-router-dom";
 
 const FindFilm = () => {
-    let [battlefieldData, setBattlefieldData] = useState("");
     const columns = [
         {
             title: 'Название',
@@ -25,6 +24,7 @@ const FindFilm = () => {
         },
 
     ];
+    let [battlefieldData, setBattlefieldData] = useState("");
     let filmsApiWorker = new FilmsApiWorker();
     let [data, setData] = useState([]);
     const getFilmById = () => {
