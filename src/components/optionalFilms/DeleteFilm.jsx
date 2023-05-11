@@ -13,7 +13,7 @@ const DeleteFilm = () => {
     const deleteFilmById = () => {
         filmsApiWorker.deleteFilmById(battlefieldData)
             .then(response => {
-                setData(response.data);
+                window.location.reload();
             })
             .catch(error => {
                 console.log("getFindFilm ERRRROR");
@@ -53,7 +53,7 @@ const DeleteFilm = () => {
                                     style={{
                                         width: '9%',
                                     }}
-                                    onClick={DeleteFilm}>
+                                    onClick={deleteFilmById}>
                                 Удалить
                             </Button>
                         </div>
