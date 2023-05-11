@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button, Col, Form, Input, InputNumber, Row, Table} from 'antd';
 import MenuItem from "../menu/MenuItem";
+
+
 
 const layout = {
     labelCol: {
@@ -25,10 +27,17 @@ const validateMessages = {
 const onFinish = (values) => {
     console.log(values);
 };
+
 const AddFilm = () => {
+    let [nameFilms , setNameFilms] = useState("");
+    let [releaseDate , setReleaseDate] = useState("");
+    let [durationFilm , setDurationFilm] = useState("");
+    let [descriptionFilm , setDescriptionFilm] = useState("");
+
     const onFinish = (value) => {
         console.log(value);
     };
+
     return (
         <div>
             <Row>
@@ -58,7 +67,7 @@ const AddFilm = () => {
                                 <Input/>
                             </Form.Item>
                             <Form.Item
-                                name={['dateFilms']}
+                                name={['releaseDate']}
                                 label="Дата выхода"
                                 rules={[
                                     {
@@ -70,7 +79,7 @@ const AddFilm = () => {
                                 <Input/>
                             </Form.Item>
                             <Form.Item
-                                name={['time']}
+                                name={['durationFilm']}
                                 label="Длительность(Минут)"
                                 rules={[
                                     {
@@ -83,7 +92,7 @@ const AddFilm = () => {
                                 <InputNumber/>
                             </Form.Item>
                             <Form.Item
-                                name={['description']}
+                                name={['descriptionFilm']}
                                 label="Описание фильма"
                                 rules={[
                                     {
