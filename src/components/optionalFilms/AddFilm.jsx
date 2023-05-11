@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Col, Form, Input, InputNumber, Row, Table} from 'antd';
 import MenuItem from "../menu/MenuItem";
-import {json} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import FilmsApiWorker from "../../api/Api";
 
 
 const layout = {
@@ -24,23 +25,39 @@ const validateMessages = {
     },
 };
 
-const onFinish = (values) => {
-    console.log(values);
-};
 
 const AddFilm = () => {
+    let id = ``;
     let [nameFilms, setNameFilms] = useState("");
     let [releaseDate, setReleaseDate] = useState("");
     let [durationFilm, setDurationFilm] = useState("");
     let [styleFilm, setStyleFilm] = useState("");
     let [descriptionFilm, setDescriptionFilm] = useState("");
+    let photoFilm = ``;
 
-    let photoFilm = "";
+    let [data, setData] = useState([]);
+
+    let filmsApiWorker = new FilmsApiWorker();
+    let filmsItem = JSON.stringify(id,nameFilms,releaseDate,durationFilm,photoFilm,durationFilm,styleFilm);
 
     const onFinish = (value) => {
         console.log(value);
     };
-
+    const addFilmsItem = () => {
+        filmsApiWorker.addNewFilm(filmsItem)
+            .then(response => {
+                console.log(response.data);
+                window.location.reload();
+                setData(response.data);
+            })
+            .catch(error => {
+                console.log("addFilm ERRRROR");
+            });
+    }
+    useEffect(() => {
+        addFilmsItem();
+    }, []);
+    const navigate = useNavigate()
     return (
         <div>
             <Row>
