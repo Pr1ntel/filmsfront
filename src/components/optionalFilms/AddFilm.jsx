@@ -27,7 +27,6 @@ const validateMessages = {
 
 
 const AddFilm = () => {
-    let id = ``;
     let [nameFilms, setNameFilms] = useState("");
     let [releaseDate, setReleaseDate] = useState("");
     let [durationFilm, setDurationFilm] = useState("");
@@ -35,28 +34,34 @@ const AddFilm = () => {
     let [descriptionFilm, setDescriptionFilm] = useState("");
     let photoFilm = ``;
 
+
     let [data, setData] = useState([]);
 
     let filmsApiWorker = new FilmsApiWorker();
-    let filmsItem = JSON.stringify(id,nameFilms,releaseDate,durationFilm,photoFilm,durationFilm,styleFilm);
+
 
     const onFinish = (value) => {
         console.log(value);
     };
     const addFilmsItem = () => {
+        let filmsItem = {
+            nameFilms,
+            releaseDate,
+            descriptionFilm,
+            durationFilm,
+            photoFilm,
+            styleFilm
+        };
+        console.log(filmsItem);
+
         filmsApiWorker.addNewFilm(filmsItem)
             .then(response => {
-                console.log(response.data);
-                window.location.reload();
-                setData(response.data);
+                console.log(200);
             })
             .catch(error => {
                 console.log("addFilm ERRRROR");
             });
     }
-    useEffect(() => {
-        addFilmsItem();
-    }, []);
     const navigate = useNavigate()
     return (
         <div>
@@ -101,10 +106,10 @@ const AddFilm = () => {
                                 ]}
                             >
                                 <Input value={styleFilm}
-                                            onChange={event => {
-                                                setStyleFilm(event.target.value);
-                                                console.log(styleFilm)
-                                            }}/>
+                                       onChange={event => {
+                                           setStyleFilm(event.target.value);
+                                           console.log(styleFilm)
+                                       }}/>
                             </Form.Item>
                             <Form.Item
                                 name={['releaseDate']}
@@ -127,10 +132,10 @@ const AddFilm = () => {
                                 label="Длительность(Минут)"
                             >
                                 <Input value={durationFilm}
-                                             onChange={event => {
-                                                 setDurationFilm(event.target.value);
-                                                 console.log(durationFilm)
-                                             }}/>
+                                       onChange={event => {
+                                           setDurationFilm(event.target.value);
+                                           console.log(durationFilm)
+                                       }}/>
                             </Form.Item>
                             <Form.Item
                                 name={['descriptionFilm']}
@@ -155,8 +160,8 @@ const AddFilm = () => {
                                 }}
                             >
                                 <Button type="primary" htmlType="submit"
-                                      //onClick={A}
-                                    >
+                                        onClick={addFilmsItem}
+                                >
                                     Добавить
                                 </Button>
 
