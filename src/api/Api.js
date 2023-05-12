@@ -38,8 +38,8 @@ class FilmsApiWorker {
         return await this.#axios.delete(`/deleteFilm/${id}`);
     }
 
-    async addNewFilm(FilmsItem) {
-        return await this.#axios.post("/addFilm");
+    async addNewFilm(filmsItem) {
+        return await this.#axios.post("/addFilm", filmsItem);
     }
 
 }
